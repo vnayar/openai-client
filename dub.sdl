@@ -1,0 +1,32 @@
+name "openai-client"
+description "A client library generated from OpenAI's OpenAPI specification."
+authors "Vijay Nayar"
+copyright "Copyright © 2022, Vijay Nayar"
+license "LGPL"
+#targetType "none"
+targetType "library"
+targetPath "target"
+# Currently vibe 0.9.5 contains a large number of deprecation warnings.
+buildRequirements "silenceDeprecations"
+dependency "openapi-client" version="~>2.1"
+
+# The first configuration is used to build the library when used as a dub dependency.
+configuration "library" {
+}
+
+# To execute integration tests, run: dub test --config=integration
+configuration "integration" {
+  dependency "silly" version="~>1.2.0-dev.2"
+  targetType "library"
+  sourcePaths "test"
+  # Unless explicitly excluded, the "source" path remains available.
+  excludedSourceFiles "*/app.d" "*/main.d"
+  importPaths "test"
+}
+
+# Generate the client using the command "dub build --config=generate".
+configuration "generate" {
+  targetType "library"
+  preGenerateCommands "rm -rf source/openai/*"
+  preGenerateCommands "dub run openapi-client@2.0.1 -- --vv --targetDir=source --openApiSpec=json/openapi.json --packageRoot=openai"
+}

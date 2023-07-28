@@ -1,0 +1,21 @@
+test.sh
+.dub
+target/
+*.a
+*.dll
+*.dylib
+*.exe
+*.o
+*.obj
+*.lib
+*.lst
+*.so
+
+# Emacs/Vim
+\#*\#
+*~
+
+# GNU Global
+GPATH
+GRTAGS
+GTAGS
