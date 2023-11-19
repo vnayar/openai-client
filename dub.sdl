@@ -28,5 +28,5 @@ configuration "integration" {
 configuration "generate" {
   targetType "library"
   preGenerateCommands "rm -rf source/openai/*"
-  preGenerateCommands "dub run openapi-client@2.0.1 -- --vv --targetDir=source --openApiSpec=json/openapi.json --packageRoot=openai"
+  preGenerateCommands "dub run openapi-client@2.1.0 -- --vv --targetDir=source --openApiSpec=json/openapi.json --packageRoot=openai"
 }
