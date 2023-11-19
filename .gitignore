@@ -10,6 +10,7 @@ target/
 *.lib
 *.lst
 *.so
+json/openapi.yaml
 
 # Emacs/Vim
 \#*\#
